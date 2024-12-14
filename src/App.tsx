@@ -9,6 +9,8 @@ import { getContractMetadata } from "thirdweb/extensions/common"
 import { claimTo, getActiveClaimCondition, getTotalClaimedSupply, nextTokenIdToMint } from "thirdweb/extensions/erc721"
 import { useState } from "react";
 
+const CONTRACT_ADDRESS = import.meta.env.VITE_CONTRACT_ADDRESS;
+
 export function App() {
 	const account = useActiveAccount();
 
@@ -18,7 +20,7 @@ export function App() {
 	const contract = getContract({
 		client: client,
 		chain: chain,
-		address: "0xb2Eae29A640669Ab4f19B31e5bCB60310CaC3133"
+		address: CONTRACT_ADDRESS
 	})
 
 	const { data: contractMetadata, isLoading: isContractMetadataLoading } = useReadContract(getContractMetadata, { contract });
